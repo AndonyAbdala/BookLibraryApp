@@ -8,6 +8,6 @@
         public string Genre { get; set; } = string.Empty;
 
         // Mostrar información básica del autor
-        public string AuthorName { get; set; } = string.Empty;
+        public int AuthorId { get; set; }
     }
 }

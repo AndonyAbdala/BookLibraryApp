@@ -25,7 +25,7 @@ namespace BookLibraryApi.Presentation.Controllers
         public async Task<IActionResult> GetAll()
         {
             List<Book> books = await bookRepository.GetAllAsync();
-            List<BookInputDTO> bookDTOs = this.mapper.Map<List<BookInputDTO>>(books);
+            List<BookOutputDTO> bookDTOs = this.mapper.Map<List<BookOutputDTO>>(books);
             return Ok(bookDTOs);
         }
 
@@ -35,7 +35,7 @@ namespace BookLibraryApi.Presentation.Controllers
             Book? book = await bookRepository.GetByIdAsync(id);
             if (book == null)
                 throw new Exception("El libro no existe"); // Ahora será manejado globalmente
-            BookInputDTO bookItem = this.mapper.Map<BookInputDTO>(book);
+            BookOutputDTO bookItem = this.mapper.Map<BookOutputDTO>(book);
             return Ok(bookItem);
         }
 
@@ -70,7 +70,7 @@ namespace BookLibraryApi.Presentation.Controllers
         // DELETE: api/students/{id}
         // =====================================
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> DeleteStudent(int id)
+        public async Task<IActionResult> DeleteBook(int id)
         {
             var student = await bookRepository.GetByIdAsync(id);
             if (student == null)

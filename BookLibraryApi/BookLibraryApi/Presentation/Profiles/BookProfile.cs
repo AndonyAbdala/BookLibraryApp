@@ -9,8 +9,7 @@ namespace BookLibraryApi.Presentation.Profiles
     {
         public BookProfile()
         {
-            CreateMap<Book, BookOutputDTO>()
-                .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.Name));
+            CreateMap<Book, BookOutputDTO>();
 
             CreateMap<BookInputDTO, Book>();
         }

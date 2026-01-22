@@ -1,16 +1,18 @@
-﻿using System.Net;
+﻿using BookLibraryApi.Application.Exceptions;
+using System.Net;
 using System.Text.Json;
-using Microsoft.AspNetCore.Http;
 
 namespace BookLibraryApi.Presentation.Middlewares
 {
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly ILogger<ExceptionMiddleware> _logger;
 
-        public ExceptionMiddleware(RequestDelegate next)
+        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -22,24 +24,42 @@ namespace BookLibraryApi.Presentation.Middlewares
             }
             catch (Exception ex)
             {
+                LogException(context, ex);
                 // Si ocurre una excepción, la manejamos aquí
                 await HandleExceptionAsync(context, ex);
             }
         }
 
-        private static Task HandleExceptionAsync(HttpContext context, Exception ex)
+        private void LogException(HttpContext context, Exception ex)
+        {
+            _logger.LogError(
+                ex,
+                "Unhandled exception. Method: {Method}, Path: {Path}",
+                context.Request.Method,
+                context.Request.Path
+            );
+        }
+
+        private Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             // Configuramos la respuesta
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            var statusCode = ex switch
+            {
+                NotFoundException => HttpStatusCode.NotFound,
+                ValidationException => HttpStatusCode.BadRequest,
+                _ => HttpStatusCode.InternalServerError
+            };
+
+            context.Response.StatusCode = (int)statusCode;
 
             // Objeto de respuesta uniforme
             var response = new
             {
                 Success = false,
-                Message = ex.Message,
-                // En desarrollo puedes incluir detalles
-                // StackTrace = ex.StackTrace
+                Message = statusCode == HttpStatusCode.InternalServerError
+                    ? "An unexpected error occurred."
+                    : ex.Message
             };
 
             var json = JsonSerializer.Serialize(response);

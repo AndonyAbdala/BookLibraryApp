@@ -26,6 +26,7 @@ namespace BookLibraryApi.Infrastructure.Repositories
             this.bookLibraryContext.Authors.Add(author);
             await this.bookLibraryContext.SaveChangesAsync();
         }
+
         public async Task<Author?> UpdateAsync(int id, Author author)
         {
             var existingAuthor = await this.GetByIdAsync(id);

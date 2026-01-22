@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GAA6GA\\Documents\\MyProjects\\BookLibraryApi\\BookLibraryApi\\BookLibraryApi.csproj": {}
+    "C:\\MyProjects\\BookLibraryApp\\BookLibraryApi\\BookLibraryApi\\BookLibraryApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GAA6GA\\Documents\\MyProjects\\BookLibraryApi\\BookLibraryApi\\BookLibraryApi.csproj": {
+    "C:\\MyProjects\\BookLibraryApp\\BookLibraryApi\\BookLibraryApi\\BookLibraryApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GAA6GA\\Documents\\MyProjects\\BookLibraryApi\\BookLibraryApi\\BookLibraryApi.csproj",
+        "projectUniqueName": "C:\\MyProjects\\BookLibraryApp\\BookLibraryApi\\BookLibraryApi\\BookLibraryApi.csproj",
         "projectName": "BookLibraryApi",
-        "projectPath": "C:\\Users\\GAA6GA\\Documents\\MyProjects\\BookLibraryApi\\BookLibraryApi\\BookLibraryApi.csproj",
-        "packagesPath": "C:\\Users\\GAA6GA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GAA6GA\\Documents\\MyProjects\\BookLibraryApi\\BookLibraryApi\\obj\\",
+        "projectPath": "C:\\MyProjects\\BookLibraryApp\\BookLibraryApi\\BookLibraryApi\\BookLibraryApi.csproj",
+        "packagesPath": "C:\\Users\\andon\\.nuget\\packages\\",
+        "outputPath": "C:\\MyProjects\\BookLibraryApp\\BookLibraryApi\\BookLibraryApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\GAA6GA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\andon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,7 +44,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -98,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.415/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

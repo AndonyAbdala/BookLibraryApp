@@ -1,3 +1,5 @@
+using BookLibraryApi.Application.Interfaces;
+using BookLibraryApi.Application.Services;
 using BookLibraryApi.Domain.Interfaces;
 using BookLibraryApi.Infrastructure.Data;
 using BookLibraryApi.Infrastructure.Repositories;
@@ -20,6 +22,9 @@ builder.Services.AddDbContext<BookLibraryContext>(options =>
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+
+// Services
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 var app = builder.Build();
 
